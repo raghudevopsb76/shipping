@@ -22,13 +22,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Install NodeJS Dependencies
-      run: npm install
+    - name: Install Maven Dependencies
+      run: |
+        mvn clean package
+        mv target/shipping-1.0.jar shipping.jar
 
     - name: Build
       run: |
         echo $GITHUB_REF_NAME > VERSION
-        zip -r shipping-$GITHUB_REF_NAME.zip *
+        zip -r shipping-$GITHUB_REF_NAME.zip shipping.jar VERSION
 
     - name: Release App
       run: |
