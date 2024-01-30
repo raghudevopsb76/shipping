@@ -30,7 +30,7 @@ jobs:
     - name: Build
       run: |
         echo $GITHUB_REF_NAME > VERSION
-        zip -r shipping-$GITHUB_REF_NAME.zip shipping.jar VERSION
+        zip -r shipping-$GITHUB_REF_NAME.zip shipping.jar VERSION schema
 
     - name: Release App
       run: |
